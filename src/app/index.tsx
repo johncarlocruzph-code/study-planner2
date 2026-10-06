@@ -39,4 +39,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: Colors.background, padding: 20 },
   title: { fontSize: 28, fontWeight: 'bold', color: Colors.primary },
-  subtitle: { fontSize: 16, color:
+  subtitle: { fontSize: 16, color: Colors.muted, marginTop: 6, marginBottom: 20 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 10 },
+});
