@@ -1,12 +1,13 @@
 // Global color palette so every screen uses the same theme.
 export const Colors = {
-  background: '#EEF4FF',
+  background: '#F3F5FB',
   card: '#FFFFFF',
-  primary: '#1F5FD6',
-  text: '#16213A',
-  muted: '#6B7690',
-  accent: '#F2A900',
-  border: '#D3DEF5',
-  success: '#2E9E6B',
-  danger: '#D64545',
+  primary: '#4F46E5',
+  primaryDark: '#312E81',
+  text: '#1B1F3B',
+  muted: '#6B7280',
+  accent: '#FBBF24',
+  border: '#E3E7F3',
+  success: '#16A34A',
+  danger: '#DC2626',
 };
