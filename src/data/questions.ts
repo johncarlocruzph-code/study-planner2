@@ -283,8 +283,8 @@ export function getCategoriesByGroup(group?: string): Category[] {
 
 // Returns undefined if the id is missing or does not match any category.
 export function getCategoryById(categoryId?: string): Category | undefined {
-  const language = languageCategories.find((c) => c.id === categoryId);
-  return language ? language : topicCategories.find((c) => c.id === categoryId);
+  const allCategories = [...languageCategories, ...topicCategories];
+  return allCategories.find((c) => c.id === categoryId);
 }
 
 // Returns the questions of one category. Empty list if the id is missing or unknown.

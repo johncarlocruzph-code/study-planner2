@@ -1,11 +1,12 @@
-import { Link, router } from 'expo-router';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import MenuCard from '../components/MenuCard';
-import { Colors } from '../constants/colors';
-import { categories } from '../data/questions';
+import { Link, router } from "expo-router";
+import { Button, StyleSheet, Text, View } from "react-native";
+import MenuCard from "../components/MenuCard";
+import { Colors } from "../constants/colors";
+import { getCategoriesByGroup } from "../data/questions";
 
 // Home screen, route "/". The user chooses a quiz category.
 export default function HomeScreen() {
+  const categories = getCategoriesByGroup();
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>BSIT Quiz Game</Text>
@@ -22,14 +23,20 @@ export default function HomeScreen() {
             title={category.title}
             // router.push inside an event handler. Only the category id is sent (Lesson 5).
             onPress={() =>
-              router.push({ pathname: '/quiz', params: { category: category.id } })
+              router.push({
+                pathname: "/quiz",
+                params: { category: category.id },
+              })
             }
           />
         ))}
       </View>
 
       {/* Link for a direct destination (Lesson 4). */}
-      <Link href={{ pathname: '/quiz', params: { category: 'programming' } }} asChild>
+      <Link
+        href={{ pathname: "/quiz", params: { category: "programming" } }}
+        asChild
+      >
         <Button title="Quick Start: Programming" color={Colors.primary} />
       </Link>
     </View>
@@ -38,7 +45,17 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: Colors.background, padding: 20 },
-  title: { fontSize: 28, fontWeight: 'bold', color: Colors.primary },
-  subtitle: { fontSize: 16, color: Colors.muted, marginTop: 6, marginBottom: 20 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 10 },
+  title: { fontSize: 28, fontWeight: "bold", color: Colors.primary },
+  subtitle: {
+    fontSize: 16,
+    color: Colors.muted,
+    marginTop: 6,
+    marginBottom: 20,
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
 });

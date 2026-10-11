@@ -19,24 +19,23 @@ export default function QuizScreen() {
   const [secondsLeft, setSecondsLeft] = useState(10);
 
   // useEffect (Lesson 6): the side effect is a countdown timer. It stays offline.
-  // The effect runs again whenever secondsLeft or selected changes (dependency array),
-  // so each run counts down one second. Cleanup stops the old timer first.
+  // The effect runs again whenever selected changes (dependency array).
+  // When time reaches 0, mark as time up. Cleanup stops the old timer first.
   useEffect(() => {
     if (selected !== -1) {
       return;
     }
     const timerId = setInterval(() => {
-      setSecondsLeft(secondsLeft - 1);
+      setSecondsLeft((prev) => {
+        if (prev - 1 <= 0) {
+          setSelected(-2);
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
     return () => clearInterval(timerId);
-  }, [secondsLeft, selected]);
-
-  // When the time reaches 0 and there is no answer yet, mark it as time up.
-  useEffect(() => {
-    if (secondsLeft <= 0 && selected === -1) {
-      setSelected(-2);
-    }
-  }, [secondsLeft, selected]);
+  }, [selected]);
 
   const question = questionList[index];
 
