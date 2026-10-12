@@ -113,7 +113,6 @@ In this example, `answer: 2` points to `choices[2]`, which is `const`. Keep the 
 
 - `app.json` configures the Expo app, Expo Router plugin, and typed routes.
 - `tsconfig.json` enables strict TypeScript and the `@/` path aliases.
-- `babel.config.js` configures Babel and resolves those aliases in the app bundle.
 - `src/app/_layout.tsx` configures the stack headers. A blank `title` hides a route filename such as `group` without hiding the header/back arrow.
 
 ## Validate changes
